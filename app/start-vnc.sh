@@ -1,19 +1,15 @@
 #!/bin/bash
 
-# Start VNC server with provided geometry and depth
-tightvncserver $DISPLAY -geometry $GEOMETRY -depth $DEPTH && \
+#echo "Updating /etc/hosts file ..."
 
-# Start noVNC to provide browser-based access to the VNC server 
-novnc_proxy --vnc localhost:5901 --listen 6080 & 
+echo "127.0.0.1\t$HOSTNAME" >> /etc/hosts
 
-# Keep the script running so that the container doesn't exit immediately 
-tail -f /dev/null #!/bin/bash
+echo "Starting VNC server at $RESOLUTION..."
+vncserver -kill :1 || true
+vncserver -geometry $RESOLUTION
 
-# Start VNC server with provided geometry and depth
-tightvncserver $DISPLAY -geometry $GEOMETRY -depth $DEPTH && \
+echo "VNC server started at $RESOLUTION!"
 
-# Start noVNC to provide browser-based access to the VNC server 
-novnc_proxy --vnc localhost:5901 --listen 6080 & 
+echo "Starting tail -f /dev/null..."
 
-# Keep the script running so that the container doesn't exit immediately 
-tail -f /dev/null 
+tail -f /dev/null
