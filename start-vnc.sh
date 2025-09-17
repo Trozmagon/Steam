@@ -12,4 +12,4 @@ echo "VNC server started at $RESOLUTION!"
 
 echo "Starting tail -f /dev/null..."
 
-tail -f /dev/null
+tail -f /dev/null 

@@ -261,3 +261,4 @@ __pycache__/
 *.pyc
 /Stx.Tmsv.Api/logs
 /Stx.Tmsv.Api/.config/dotnet-tools.json
+/test-build.txt
